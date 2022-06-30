@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>Harry Potter</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#shop_cate ul").hide();
+
+			$("#shop_cate h4").click(function(){
+				$("#shop_cate ul").slideUp(500);
+				$(this).next().slideDown(500);
+			});
+
+
+			$("#btns").click(function(){
+				var schs = prompt("제품검색");
+				
+				$("#harry_potter li").hide();
+				$("#harry_potter li:contains("+schs+")").show();
+			});
+
+			$("#shop_cate h3").click(function(){
+				$("#harry_potter li").show();
+			});
+		});
+	</script>
+	<style>
+		/*################ reset ###############*/
+			*{margin:0;padding:0;}
+			li{list-style-type:none;}
+			a:link, a:visited{text-decoration:none; color:#222;}
+			section{display:block;}
+			img{border:none;}
+		
+		/*################ a 태그 ###############*/
+			body{color:#222;}
+			a:hover, a:focus{color:#1cbcb7;}
+
+		/*################ wrap ###############*/
+			#wrap{min-width:1025px;width:100%;}
+
+		/*################ headerWrap / header(1920px) ###############*/
+			#headerWrap{width:100%;/* position:absolute; left:0; top:0; z-index:1; */background-color:#fff;}
+			#header{width:100%;/* margin:0 auto;*/}
+
+			#header a .plus{color:#FD8024;}
+			#header a .plus:hover{color:#1cbcb7;}
+
+		/*################ topManuArea / topManu(1260px) ###############*/
+			#topManuArea{width:100%; border-bottom:1px solid #ddd;}
+			#topManu{width:1260px; height:50px; line-height:50px; margin:0 auto;}
+
+			#topManu li{display:inline; font-size:14px;}
+			#topManu li a{padding:0 10px;}
+
+		/*################ lego_area / logo ###############*/
+			#lego_area{width:100%;}
+			#lego_area .lego_area{width:1260px; margin:0 auto;}
+			#lego_area .lego_area div{float:left;}
+			/*
+				1260px / 3 == 420px
+			*/
+		/*################ lego_area / black ###############*/
+			#lego_area .black{width:420px; height:150px;}
+
+		/*################ mobHeaderBtn(모바일용헤더) ###############*/
+			#mobHeaderBtn{display:none;}
+			
+		/*################ legoArea / main ###############*/
+			#lego_area .main{width:420px;}
+			/*
+				420 - 100 == 320
+				320 / 2 == 160
+				150(높이) - 100 == 50 / 2 ==25
+			*/
+			#logo{width:100px; padding-left:160px; padding-top:25px;}
+			#logo a img{width:100%; transition:transform 2s ease-in-out 0.2s;}
+			#lego_area .main:hover a img{transform:rotate(360deg)/* scale(0.8);*/}
+			
+			#lego_area .lego_area:after{content:""; display:block; clear:both; background-color:#ccf;}
+			#lego_area:after{content:""; display:block; clear:both; background-color:#ccf;}
+		
+		/*################ lego_area / sch ###############*/
+			#sch{width:420px;}
+			/*
+				420 / 6 == 70px
+				높이150 - 40 == 110 / 2 == 55px
+			*/
+			#sch form{width:160px; height:40px; padding-top:55px; float:left;}
+			#sch fieldset{border:none;}
+			#sch legend{display:none;}
+
+			/*
+				돋보기 크기 40*40으로
+				70 - 40 == 30남음
+				+120 == 150
+				70 + 120 ==190px
+			*/
+			#sch .input{width:120px; float:left;}
+			#sch .input input{width:100%; height:37px; border:none;/*1px solid #ccc*/}
+			#sch .btn{width:20px; padding:10px 0 0 10px; float:left;}
+			#sch .btn a img{width:100%;}
+			
+		/*####### infoMenu ######*/
+			#infoMenu ul{width:260px; float:left;}
+			/*
+				420 - 160 == 260
+				350 - 230 == 120
+			*/
+			#infoMenu li{height:40px; padding-top:55px; line-height:40px; font-size:14px; text-align:right; float:left;}
+			#infoMenu li a{padding:0 10px;}
+			#infoMenu li a span{padding:0 4px; background-color:#ccc; color:#fff; border-radius:14px;}
+
+		/*################ gnbArea / gnb(1260px) ###############*/
+			#gnbArea{width:100%; border-top:1px solid #ddd; border-bottom:1px solid #f1f1f1;}
+			#gnbArea div{width:1260px; margin:0 auto;}
+			/*
+				250 * 3 == 750px*/
+			
+			#gnb{width:100%; height:50px; line-height:50px;/* margin:0 auto; */}
+		
+		/*######## gnb / .gnb(li) #######*/
+			/*
+				1260 / 3 == 420px
+
+				가장 긴 글이 249 == 250*/
+			
+			#gnb .gnb{text-align:center; float:left;}
+		
+		/*######## gnb / .gnb / .plus(span) #######*/
+			#gnb .gnb a{padding:0 27px;}
+
+			#gnb .gnb ul{width:180px; font-size:13px; background-color:rgba(225,225,225,0.5); display:none; position:absolute;}
+		
+		/*######## gnb / .gnb / ul / li #######*/
+			#gnb .gnb ul li{width:100%; text-align:left;}
+			#gnb .gnb ul li a{padding:0 10px;}
+
+
+		/*######## 기능 #######
+			script의 click으로
+			#gnb li:hover ul{display:block;}*/
+
+			#gnb .gnb ul li:hover{background-color:rgba(0,0,0,0.1);}
+			#gnb .gnb ul li:hover a{color:#1cbcb7;}
+
+
+		/*################ gnb 가상객체 ###############
+			#gnb:after{content""; display:block; clear:both;}*/
+		
+		/*################ container ###############*/
+			#container{width:100%;}
+
+		/*################ shopWrap ###############*/
+			#shopWrap{width:100%;}
+
+		/*################ promotionArea / promotion(1260px) ###############*/
+			#promotionArea{width:100%;}
+			#promotion{width:1260px; padding-bottom:100px; margin:0 auto;}
+			#promotion ul{width:100%;}
+			
+		/*########### promotion / li ###########*/
+			/*
+				1260 - 60 == 1200
+				1200 / 2 == 600px
+			*/
+			/*float와 position*/
+			#promotion li{width:600px; float:left;/* position:relative;*/}
+			#promotion .right{margin-right:60px;}
+
+			#promotion p{width:100%;/* padding-bottom:10px;*/}
+			#promotion .img{width:100%;}
+
+			#promotion a:focus, #promotion a:hover{color:#1cbcb7;}
+			#promotion .img a img{width:100%;}
+			
+			#promotion .textbox{width:100%; height:100px;/* position:absolute; left:20px; top:10px;*/}
+			#promotion .textbox a{transition:color 0.2s linear 0.1s}
+			/*#promotion li:hover .textbox a{color:rgba(255,255,255,1);}*/
+			#promotion .main a{font-size:20px;}
+			#promotion .text a{font-size:14px;}
+			
+			/*가상객체*/
+			#promotion ul:after{content:""; display:block; clear:both;}
+
+		/*################ shopArea / shop(1260px) ###############*/
+			#shopArea{width:100%;}
+			#shop{width:1260px; margin:0 auto;}
+
+		/*################ shop_cate(220px) ###############*/
+			#shop_cateArea{width:220px; float:left;}
+			/*
+				1260 / 4 == 315px
+				넓음.
+				1260 - 220 == 1040 
+			*/
+			#shop_cate{width:100%;}
+			#shop_cate h3{font-size:22px; font-weight:400;}
+			#shop_cate h3 a{font-size:22px; font-weight:400; color:rgba(253, 128, 36,1);}
+			#shop_cate h4{padding:20px 0 10px;/* font-size:16px; */font-weight:400;}
+
+			#shop_cate ul{width:100%; border-bottom:1px solid #dedede; padding-bottom:10px;}
+			#shop_cate li{width:100%; padding-bottom:10px;}
+			#shop_cate li a{font-size:14px; color:#818181;}
+
+			#shop_cate li:hover a,#shop_cate li:focus a{font-size:14px; color:#1cbcb7;}
+
+		/*################ harry_potter(1040px) ###############*/
+			/*
+				1260 - 220 == 1040 
+				1040 - 945 == 95px.....
+				95-30 == 65 /// ul에 padding-left으로
+				30 / 3 == 10
+				
+				1260 / 4 == 315px
+				315 * 3 == 945, margin-left(45px)
+				280*3 == 840 , 945 - 840 == 105, / 3 == 35
+
+				li 282로. border 이미지에 줄것
+				margin-left:43px border값 -2px == 41px
+			*/
+			#harry_potter{width:1040px; padding-bottom:40px; border-bottom:1px solid #ddd; float:left;}
+			/*45+65 == 110*/
+			#harry_potter h3{text-indent:110px; font-size:14px; font-weight:400; color:#888;}
+			#harry_potter ul{width:100%; padding-left:65px;}
+			#harry_potter li{width:282px; margin-top:30px; border:1px solid rgba(253, 128, 36,0); margin-left:41px; float:left;
+			position:relative; transition:border 0.2s linear;}
+			#harry_potter li:hover{border:1px solid rgba(253, 128, 36,1);/* box-shadow:5px 5px 30px rgba(0,0,0,0.2);*/}
+
+		/*################ harry_potter / imgArea ###############*/
+			#harry_potter .bag{width:30px; height:40px; position:absolute; right:10px; top:5px;}
+			#harry_potter .bag a{font-size:30px; color:#dedede;}
+			#harry_potter .bag a:focus,#harry_potter .bag a:hover{color:rgba(253, 128, 36,1);}
+			
+			/*li width : 282px*/
+			#harry_potter li .img{width:280px; height:210px; border:1px solid rgba(253, 128, 36,0); background-color:#fff;  text-align:center;}
+
+			/*기능
+			#harry_potter li:hover .img{border:1px solid rgba(253, 128, 36,1); transition:border 0.5s linear 0.2s;}*/
+			#harry_potter li .img a img{height:100%;}
+			#harry_potter li:hover, #harry_potter li:focus{color:#1cbcb7; cursor:pointer;}
+		
+		/*################ harry_potter / desc ###############*/
+			#harry_potter .desc{width:100%; padding:10px 0; text-indent:10px;}
+			#harry_potter .field{font-size:14px; color:#888;}
+			#harry_potter .title{font-size:18px; line-height:30px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+			#harry_potter .price{color:rgba(253, 128, 36,1);}
+
+			/*가상객체*/
+			#harry_potter ul:after{content:""; display:block; clear:both;}
+			
+		/*########### shop(가상객체) ###########*/
+			#shop:after{content:""; display:block; clear:both;}
+
+		/*################ buttonArea / button ###############*/
+			#buttonArea{width:100%; padding:50px 0 80px;}
+			#button{width:1260px; height:30px; margin:0 auto;}
+			#button ul{width:120px; padding-left:220px; height:100%; margin:0 auto;}
+			#button li{width:30px; height:100%; font-size:12px; text-align:center; border-radius:15px; float:left;}
+			#button li p{width:100%; height:100%; line-height:30px;}
+			#button li p a{color:#888;}
+			
+			/*
+				[기능]
+				누르면 hover 처럼 나오는 모습!
+			*/
+			#button li:hover{background-color:#ddd; cursor:pointer;}
+			#button li:hover p a{color:#fff;}
+
+
+		/*################ footerWrap(footer영역) ###############*/
+			#footerWrap{width:100%; background-color:#fafafa; padding-bottom:50px;}
+
+		/*################ footer ###############*/
+			#footer{width:100%; font-size:14px;}
+			#footer a{padding:0 10px;}
+
+			#footer .footerBorder{border-top:2px solid #ddd; border-bottom:1px solid #dedede;}
+		
+		/*################ footer_info(1260px) ###############*/
+			#footer_info{width:1260px; margin:0 auto;}
+			#footer_info ul{width:50%; padding:10px 0; float:left;}
+
+		/*######### footer_info(ul) ##########*/
+			/*
+				1260 / 2 == 630px
+				근데 50%, follow_us랑 같은 선상의 위치로
+			*/
+			#footer_menu li{display:inline;}
+
+		/*######### follow_us(ul) ##########*/
+			#follow_us{text-align:right;}
+			#follow_us li{display:inline-block; width:20px; height:20px; margin:0 5px; background-color:#7a7; overflow:hidden; border-radius:5px;}
+			#follow_us li a{padding:0;}
+			#follow_us li a img{width:100%;}
+			/*기능*/
+			#follow_us li:hover img,#follow_us li:focus img{margin-top:-20px;}
+
+			#footer_info:after{content:""; display:block; clear:both;}
+
+		/*################ footerContArea / footerCont ###############*/
+			#footerContArea{width:100%;}
+			#footerCont{width:1260px; margin:0 auto;}
+			#footerCont div{width:630px; float:left;}
+		
+		/*######### footerCont / logo(div) ##########*/
+			/*
+				1260 / 2 == 630px, 이것도 50%
+			*/
+			#footerCont .logo{padding:50px 0;}
+			#footerCont .logo div{border-right:1px solid #dedede;}
+			#footerCont .logo .lego{width:100px; margin-left:10px;}
+			#footerCont .logo .lego a{padding:0;}
+			#footerCont .logo .lego a img{width:100%; transition:transform 2s ease-out 0.2s;}
+			#footerCont .logo .lego:hover a img{transform:rotate(360deg) scale(0.8);}
+
+		/*######### footerCont / p ##########*/
+			#footerCont p{width:100%; margin-bottom:20px;}
+
+		/*######### footerCont / logo / location(p) ##########*/
+			/*630 / 3 == 210px, 210 - 20 == 190*/
+			#footerCont .location{width:190px; padding:10px; margin-left:10px; background-color:rgb(32,29,72);}
+			#footerCont .location span{padding:0 10px;}
+			#footerCont .location a{color:#fff;}
+
+			#footerCont .location:hover a{color:#1cbcb7;}
+
+		/*######### footerCont / subscribe(div) ##########*/
+			#footerCont .subscribe{padding:50px 0;}
+			/*
+				630px - 50px(padding-left) == 580px - 1 == 579
+			*/
+			#footerCont .subscribe div{width:579px; padding-left:50px;}
+			#footerCont .title{/*width:100%; */ height:30px;}
+			#footerCont .address{width:204px; height:40px; background-color:#fff; float:left;}
+
+			/*########*/
+			#address{width:100%; height:100%; text-indent:10px; background-color:rgba(255,255,255,1); border:1px solid rgb(253,128,36);}
+
+			#footerCont .btn{width:50px; height:42px; float:left;}
+			#btn{width:100%; height:100%; background-color:rgb(253,128,36); border:1px solid rgb(253,128,36); border-radius:0 5px 5px 0; color:#fff;}
+
+			#footerCont .btn:hover #btn{background-color:#fff;color:rgb(253,128,36)}
+
+			#footerCont:after{content:""; display:block; clear:both;}
+
+		/*######### copyrightArea / copyright ##########*/
+			#copyrightArea{width:100%; border-top:1px solid #ddd;}
+			#copyrightMenu{width:1260px; margin:0 auto;}
+			#copyrightMenu .border{padding-top:50px;}
+
+			#copyrightMenu ul{width:100%; padding:10px 0;}
+			#copyrightMenu li{display:inline-block;}
+			#copyright{width:100%; padding-top:30px;text-indent:10px;}
+			#copyright a{padding:0;}
+
+		/*########### 버리는 영역_임시보관소 ##########*/
+			h1{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; overflow:hidden;}
+			h2{position:absolute; left:-9999px; width:1px; height:1px; line-height:0px; font-size:1px; overflow:hidden;}
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>lego</h1>
+				<div id="topManuArea">
+					<ul id="topManu">
+						<!--
+						<li>
+							<a href="#" title="mobileMenu_icon">
+								<span class="plus">+</span>
+							</a>
+						</li>-->
+						<li>
+							<a href="https://www.lego.com/en-us/aboutus" title="aboutUs">
+								About Us
+							</a>
+						</li>
+						<li>
+							<a href="https://www.lego.com/ko-kr/kids" title="play_zone">
+								PLAY ZONE
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="lego_area">
+					<div class="lego_area">
+						<div class="black">
+							<div id="mobHeaderBtn">
+								<p>─</p>
+							</div>
+						</div>
+						<div class="main">
+							<div id="logo">
+								<!--헤더 참고 사이트
+									https://www.dotorisup.com
+									카테고리 참고 사이트
+									https://www.redprinting.co.kr/ko
+								-->
+								<a href="http://idph0203.dothome.co.kr/lego/" title="lego">
+									<img src="img/logo0.svg" alt="lego"/>
+								</a>
+							</div>
+						</div>
+						<div id="sch">
+							<form action="#" method="get">
+								<fieldset>
+									<legend>검색</legend>
+									<p class="input">
+										<input id="search" type="text" name="search" title="검색"/>
+									</p>
+									<p class="btn"><!--input으로?-->
+										<a href="#" title="검색버튼">
+											<img src="img/search.png" alt="돋보기_이미지"/>
+										</a>
+									</p>
+								</fieldset>
+							</form>
+							<div id="infoMenu">
+								<ul>
+									<li>
+										<a href="#" title="login">login</a>
+									</li>
+									<li>
+										<a href="#" title="sign_up">sign_up</a>
+									</li>
+									<li>
+										<a href="#" title="basket">basket <span class="number">0</span></a>
+									</li>
+									<li>
+										<a href="#" title="vip">vip</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="gnbArea">
+					<div>
+						<ul id="gnb">
+							<li class="gnb">
+								<a href="#" title="all">All<span class="plus">+</span></a>
+								<ul class="all">
+									<li>
+										<a href="#" title="see_all_SETS">
+											SEE ALL SETS
+										</a>
+									</li>
+									<li>
+										<a href="#" title="see_all_ages">
+											SEE ALL AGES
+										</a>
+									</li>
+									<li>
+										<a href="#" title="see_all_Interests">
+											SEE ALL INTERESTS
+										</a>
+									</li>
+									<li>
+										<a href="#" title="see_all_bricks">
+											SEE ALL BRICKS
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="set">Sets by theme</a>
+								<ul class="set">
+									<li>
+										<a href="#" title="architecture">
+											Architecture
+										</a>
+									</li>
+									<li>
+										<a href="#" title="batman">
+											Batman™
+										</a>
+									</li>
+									<li>
+										<a href="#" title="boost">
+											BOOST
+										</a>
+									</li>
+									<li>
+										<a href="#" title="brickHeadz">
+											BrickHeadz
+										</a>
+									</li>
+									<li>
+										<a href="#" title="brick_sketches">
+											Brick Sketches™
+										</a>
+									</li>
+									<li>
+										<a href="#" title="city">
+											City
+										</a>
+									</li>
+									<li>
+										<a href="#" title="disney">
+											Disney™
+										</a>
+									</li>
+									<li>
+										<a href="#" title="dots">
+											DOTS
+										</a>
+									</li>
+									<li>
+										<a href="#" title="friends">
+											Friends
+										</a>
+									</li>
+									<li>
+										<a href="#" title="harry_potter">
+											Harry Potter™
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="age">Age</a>
+								<ul class="age">
+									<li>
+										<a href="#" title="ages1">
+											1.5+
+										</a>
+									</li>
+									<li>
+										<a href="#" title="ages4">
+											4+
+										</a>
+									</li>
+									<li>
+										<a href="#" title="ages6">
+											6
+										</a>
+									</li>
+									<li>
+										<a href="#" title="ages9">
+											9
+										</a>
+									</li>
+									<li>
+										<a href="#" title="ages13">
+											13
+										</a>
+									</li>
+									<li>
+										<a href="#" title="ages18">
+											18
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="price_ranges">Price Ranges</a>
+								<ul class="price">
+									<li>
+										<a href="#" title="under_$25">
+											Under $25
+										</a>
+									</li>
+									<li>
+										<a href="#" title="$25_$50">
+											$25 - $50
+										</a>
+									</li>
+									<li>
+										<a href="#" title="$50_$75">
+											$50 - $75
+										</a>
+									</li>
+									<li>
+										<a href="#" title="$75_$100">
+											$75 - $100
+										</a>
+									</li>
+									<li>
+										<a href="#" title="over_$100">
+											Over $100
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="lego_merchandise">LEGO Merchandise</a>
+								<ul class="mer">
+									<li>
+										<a href="#" title="accessories">
+											Accessories
+										</a>
+									</li>
+									<li>
+										<a href="#" title="backpacks_lunch_boxes">
+											Backpacks &amp; Lunch Boxes
+										</a>
+									</li>
+									<li>
+										<a href="#" title="books">
+											Books
+										</a>
+									</li>
+									<li>
+										<a href="#" title="keychains">
+											Keychains
+										</a>
+									</li>
+									<li>
+										<a href="#" title="puzzles_board_games">
+											Puzzles &amp; Board games
+										</a>
+									</li>
+									<li>
+										<a href="#" title="role_play_costumes">
+											Role Play &amp; Costumes
+										</a>
+									</li>
+									<li>
+										<a href="#" title="stationery">
+											Stationery
+										</a>
+									</li>
+									<li>
+										<a href="#" title="storage">
+											Storage
+										</a>
+									</li>
+									<li>
+										<a href="#" title="keychains">
+											Keychains
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="interests">Interests</a>
+								<ul class="interest">
+									<li>
+										<a href="#" title="adults_welcome">
+											Adults Welcome
+										</a>
+									</li>
+									<li>
+										<a href="#" title="animals">
+											Animals
+										</a>
+									</li>
+									<li>
+										<a href="#" title="arts_and_crafts">
+											Arts and Crafts
+										</a>
+									</li>
+									<li>
+										<a href="#" title="buildings">
+											Buildings
+										</a>
+									</li>
+									<li>
+										<a href="#" title="cars">
+											Cars
+										</a>
+									</li>
+									<li>
+										<a href="#" title="coding_for_kids">
+											Coding for Kids
+										</a>
+									</li>
+									<li>
+										<a href="#" title="dragons">
+											Dragons
+										</a>
+									</li>
+									<li>
+										<a href="#" title="fantasy">
+											Fantasy
+										</a>
+									</li>
+									<li>
+										<a href="#" title="movies">
+											Movies
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="bricks">Bricks</a>
+								<ul class="bricks">
+									<li>
+										<a href="#" title="Pick a Brick">
+											Pick a Brick
+										</a>
+									</li>
+									<li>
+										<a href="#" title="brick_accessories_kits">
+											Brick Accessories &amp; Kits
+										</a>
+									</li>
+									<li>
+										<a href="#" title="arts_and_crafts">
+											Arts and Crafts
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="discover">DISCOVER</a>
+								<ul class="discover">
+									<li class="discover">
+										<a href="#" title="all_lego_themes">
+											All LEGO Themes
+										</a>
+									</li>
+									<li class="discover">
+										<a href="#" title="lego_news">
+											LEGO News
+										</a>
+									</li>
+									<li class="discover">
+										<a href="#" title="about_us">
+											About Us
+										</a>
+									</li>
+									<li class="discover">
+										<a href="#" title="adults_welcome">
+											Adults Welcome
+										</a>
+									</li>
+									<li class="discover">
+										<a href="#" title="lego_life_magazine">
+											LEGO Life Magazine
+										</a>
+									</li>
+									<li class="discover">
+										<a href="#" title="lego_life_app">
+											LEGO Life App
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="help">HELP</a>
+								<ul class="help">
+									<li class="help">
+										<a href="#" title="check_order_status">
+											Check Order Status
+										</a>
+									</li>
+									<li class="help">
+										<a href="#" title="delivery_n_returns">
+											Delivery &amp; Returns
+										</a>
+									</li>
+									<li class="help">
+										<a href="#" title="find_a_lego_store">
+											Find a LEGO Store
+										</a>
+									</li>
+									<li class="help">
+										<a href="#" title="find_building_instructions">
+											Find Building Instructions
+										</a>
+									</li>
+									<li class="help">
+										<a href="#" title="common_questions">
+											Common Questions
+										</a>
+									</li>
+									<li class="help">
+										<a href="#" title="contact_us">
+											Contact Us
+										</a>
+									</li>
+									<li class="help">
+										<a href="#" title="replacement_parts">
+											Replacement Parts
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="gnb">
+								<a href="#" title="get_creative"><span class="plus">GET CREATIVE</span></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<div id="shopWrap">
+				<div id="promotionArea">
+					<section id="promotion">
+						<h2>promotion</h2>
+						<ul>
+							<li class="right">
+								<p class="img">
+									<a href="#" title="promotion">
+										<img src="img/p0.jpg" title="promotion">
+									</a>
+								</p>
+								<div class="textbox">
+									<p class="main">
+										<a href="#" title="harryPotter">
+											Enter the world of Diagon Alley™
+										</a>
+									</p>
+									<!---->
+									<p class="text">
+										<a href="#" title="harryPotter">
+											Tap a brick in the wall behind the Leaky Cauldron pub and enter the world of Diagon Alley™
+										</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<p class="img">
+									<a href="#" title="promotion">
+										<img src="img/p1.jpg" title="promotion">
+									</a>
+								</p>
+								<div class="textbox">
+									<p class="main">
+										<a href="#" title="harryPotter">
+											A very special delivery
+										</a>
+									</p>
+									<!---->
+									<p class="text">
+										<a href="#" title="harryPotter">
+											This Hedwig model makes the perfect gift for anyone who ever dreamt of receiving an invitation to Hogwarts.
+										</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</section>
+				</div>
+				<div id="shopArea">
+					<div id="shop">
+						<div id="shop_cateArea">
+							<h2>Harry Potter</h2>
+							<div id="shop_cate">
+								<h3><a href="#" title="harrypotter">Reset All</a></h3>
+								<input id="btns" type="button" value="제품검색" title="제품검색"/>
+								<h4>PRODUCT TYPE</h4>
+								<ul class="type">
+									<li>
+										<a href="#" title="sets">
+											Sets<span class="number">[30]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="allOccasions">
+											All Occasions<span class="number">[3]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="keyChains">
+											Key Chains<span class="number">[3]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="minifigures">
+											Minifigures<span class="number">[2]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="books">
+											Books<span class="number">[1]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="home_decor">
+											Home decor<span class="number">[1]</span>
+										</a>
+									</li>
+								</ul>
+								<h4>AGE</h4>
+								<ul class="age">
+									<li>
+										<a href="#" title="age6">
+											6+<span class="number">[24]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="age9">
+											9+<span class="number">[35]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="age13">
+											13+<span class="number">[7]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="age18">
+											18+<span class="number">[4]</span>
+										</a>
+									</li>
+								</ul>
+								<h4>PRICE</h4>
+								<ul class="price">
+									<li>
+										<a href="#" title="sets">
+											$0 - $25<span class="number">[10]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="sets">
+											$25 - $50<span class="number">[14]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="sets">
+											$50 - $75<span class="number">[4]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="sets">
+											$75 - $100<span class="number">[5]</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="sets">
+											$100+<span class="number">[6]</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div id="harry_potter">
+							<h3>Showing 1 - 17 of 39 results</h3>
+							<ul>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp0.jpg" alt="harrypotter상품0"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">Exclusives</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Diagon Alley™
+											</a>
+										</p>
+										<p class="price">$399.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp1.jpg" alt="harrypotter상품1"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">Exclusives</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Clock Tower
+											</a>
+										</p>
+										<p class="price">$89.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp2.jpg" alt="harrypotter상품2"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">New</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Magical Trunk
+											</a>
+										</p>
+										<p class="price">$59.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp3.jpg" alt="harrypotter상품3"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">New</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Hospital Wing
+											</a>
+										</p>
+										<p class="price">$49.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp4.jpg" alt="harrypotter상품4"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">New</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Moment: Defense Class
+											</a>
+										</p>
+										<p class="price">$29.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp5.jpg" alt="harrypotter상품5"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">New</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Moment: Divination Class
+											</a>
+										</p>
+										<p class="price">$29.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp6.jpg" alt="harrypotter상품6"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">New</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Harry, Hermione, Ron & Hagrid™
+											</a>
+										</p>
+										<p class="price">$24.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp7.jpg" alt="harrypotter상품7"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">New</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Voldemort™, Nagini & Bellatrix
+											</a>
+										</p>
+										<p class="price">$24.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp8.jpg" alt="harrypotter상품8"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span class="point">New</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Icons - Collectors' Edition
+											</a>
+										</p>
+										<p class="price">$249.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp9.jpg" alt="harrypotter상품9"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Castle
+											</a>
+										</p>
+										<p class="price">$399.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp10.jpg" alt="harrypotter상품10"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Chamber of Secrets
+											</a>
+										</p>
+										<p class="price">$129.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp11.jpg" alt="harrypotter상품11"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Harry Potter & Hermione Granger™
+											</a>
+										</p>
+										<p class="price">$119.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp12.jpg" alt="harrypotter상품12"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Harry Potter™ Hogwarts™ Crests
+											</a>
+										</p>
+										<p class="price">$119.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp13.jpg" alt="harrypotter상품13"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Astronomy Tower
+											</a>
+										</p>
+										<p class="price">$99.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp14.jpg" alt="harrypotter상품14"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogsmeade™ Village Visit
+											</a>
+										</p>
+										<p class="price">$79.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp15.jpg" alt="harrypotter상품15"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Hogwarts™ Express
+											</a>
+										</p>
+										<p class="price">$79.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp16.jpg" alt="harrypotter상품16"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												4 Privet Drive
+											</a>
+										</p>
+										<p class="price">$69.99</p>
+									</div>
+								</li>
+								<li>
+									<div class="imgArea">
+										<p class="bag">
+											<a href="#" title="bag"><span>♥</span></a>
+										</p>
+										<p class="img">
+											<a href="#" title="harrypotter">
+												<img src="img/hp17.jpg" alt="harrypotter상품17"/>
+											</a>
+										</p>
+									</div>
+									<div class="desc">
+										<p class="field">
+											<span>Harry Potter</span>
+										</p>
+										<p class="title">
+											<a href="#" title="harrypotter">
+												Fawkes, Dumbledore’s Phoenix
+											</a>
+										</p>
+										<p class="price">$39.99</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="buttonArea">
+					<div id="button">
+						<ul>
+							<li>
+								<p class="number">
+									<a href="#" title="next_page">1</a>
+								</p>
+							</li>
+							<li>
+								<p class="number">
+									<a href="#" title="next_page">2</a>
+								</p>
+							</li>
+							<li>
+								<p class="number">
+									<a href="#" title="next_page">3</a>
+								</p>
+							</li>
+							<li>
+								<p class="number">
+									<a href="#" title="next_page">4</a>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footerWrap">
+			<div id="footer">
+				<div class="footerBorder">
+					<div id="footer_info">
+						<ul id="footer_menu">
+							<li>
+								<a href="#" title="about_us">
+									ABOUT US
+								</a>
+							</li>
+							<li>
+								<a href="#" title="support">
+									SUPPORT
+								</a>
+							</li>
+							<li>
+								<a href="#" title="attractions">
+									ATTRACTIONS
+								</a>
+							</li>
+							<li>
+								<a href="#" title="more_from_us">
+									MORE FROM US
+								</a>
+							</li>
+						</ul>
+						<ul id="follow_us"><!--팔로우 영역, 아이콘의 영역-->
+							<li>
+								<a href="#" title="facebook">
+									<img src="img/facebook.gif" alt="facebook"/>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="twitter">
+									<img src="img/twitter.gif" alt="twitter"/>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="instagram">
+									<img src="img/instagram.gif" alt="instagram"/>
+								</a>
+							</li>
+							<li>
+								<a href="#" title="youtube">
+									<img src="img/youtube.gif" alt="youtube"/>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="footerContArea">
+					<div id="footerCont">
+						<div class="logo"><!--footer부분의 로고-->
+							<div>
+								<p class="lego">
+									<a href="#" title="lego">
+										<img src="img/logo0.svg" alt="lego"/>
+									</a>
+								</p>
+								<p class="location">
+									<a href="#" title="location">
+										<span>+<!--아이콘--></span>United States
+									</a>
+								</p>
+								<p>
+									<a href="#" title="giftCards">
+										Gift Cards
+									</a>
+								</p>
+								<p>
+									<a href="#" title="legoCatalogue">
+										LEGO Catalogue
+									</a>
+								</p>
+							</div>
+						</div>
+						<div class="subscribe">
+							<div>
+								<p class="title">SUBSCRIBE TO LEGO® SHOP EMAILS</p>
+								<p class="address">
+									<input id="address" type="text" placeholder="your email address" title="address"/>
+								</p>
+								<p class="btn">
+									<input id="btn" type="submit" value="go" title="btn"/>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="copyrightArea">
+					<div id="copyrightMenu">
+						<div class="border">
+							<ul>
+								<li>
+									<a href="#" title="privacy_policy">
+										Privacy Policy
+									</a>
+								</li>
+								<li>
+									<a href="#" title="cookies">
+										Cookies
+									</a>
+								</li>
+								<li>
+									<a href="#" title="legal_notice">
+										Legal Notice
+									</a>
+								</li>
+								<li>
+									<a href="#" title="terms_of_use">
+										Terms of Use
+									</a>
+								</li>
+								<li>
+									<a href="#" title="digital_wellbeing">
+										Digital Wellbeing
+									</a>
+								</li>
+								<li>
+									<a href="#" title="accessibility">
+										Accessibility
+									</a>
+								</li>
+								<li>
+									<a href="#" title="cookieSettings">
+										Cookie Settings
+									</a>
+								</li>
+								<li>
+									<a href="#" title="do_not_sell_my_personal_information">
+										Do Not Sell My Personal Information
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div id="copyright">
+							<p>
+								Copyrigh &copy; 2022 <a href="#" title="ParkJuHee">Park Ju Hee</a>. All Rights Reserved
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>
